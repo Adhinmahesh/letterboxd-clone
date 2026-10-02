@@ -268,3 +268,96 @@
   color: #fff;
   background-color: #384654;
 }
+
+/* REVIEWS SECTION */
+.film-reviews {
+  margin-top: 50px;
+  border-top: 1px solid #2c3440;
+  padding-top: 20px;
+}
+
+.section-title {
+  color: #8fa9b5;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid #2c3440;
+  padding-bottom: 5px;
+}
+
+.review-card {
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #2c3440;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.reviewer-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #556677;
+}
+
+.reviewer-name {
+  color: #8fa9b5;
+  font-size: 0.85rem;
+}
+
+.review-text {
+  color: #9ab;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.review-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.like-review-btn, .reply-review-btn {
+  background: none;
+  border: none;
+  color: #678;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.like-review-btn:hover {
+  color: #ff8000;
+}
+
+.reply-review-btn:hover {
+  color: #fff;
+}
+
+.review-replies {
+  margin-top: 15px;
+  padding-left: 20px;
+  border-left: 2px solid #2c3440;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reply-item {
+  color: #9ab;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  background: rgba(255,255,255,0.03);
+  padding: 8px 12px;
+  border-radius: 4px;
+}
