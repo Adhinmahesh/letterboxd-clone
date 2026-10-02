@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Profile from './pages/Profile'
+import Film from './pages/Film'
 
 function App() {
   return (
@@ -28,6 +29,11 @@ function App() {
         <Route
           path="/profile"
           element={<Profile />}
+        />
+        
+        <Route
+          path="/film"
+          element={<Film />}
         />
 
       </Routes>
