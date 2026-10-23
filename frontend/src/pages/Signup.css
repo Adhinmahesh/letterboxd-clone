@@ -229,6 +229,99 @@
   background: #00b32c;
 }
 
+/* OTP Verification Styles */
+.otp-step-subtitle {
+  color: #c4d2df;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  margin: 16px 0 22px;
+}
+
+.otp-step-subtitle strong {
+  color: #ffffff;
+}
+
+.otp-input {
+  font-family: monospace, -apple-system, sans-serif !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  letter-spacing: 12px !important;
+  text-align: center !important;
+  height: 52px !important;
+  background-color: #ffffff !important;
+  color: #14181c !important;
+  border: 2px solid #00c030 !important;
+}
+
+.otp-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -6px;
+  margin-bottom: 6px;
+}
+
+.otp-link-btn {
+  background: none;
+  border: none;
+  color: #c4d2df;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+  text-decoration: underline;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+
+.otp-link-btn:hover:not(:disabled) {
+  color: #ffffff;
+}
+
+.otp-link-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.otp-link-btn.secondary {
+  color: #8fa5b8;
+}
+
+.otp-link-btn.secondary:hover {
+  color: #ffffff;
+}
+
+/* Alerts */
+.auth-alert {
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.auth-alert.success-alert {
+  background-color: rgba(0, 224, 84, 0.15);
+  border: 1px solid #00e054;
+  color: #00e054;
+}
+
+.auth-alert.error-alert {
+  background-color: rgba(244, 67, 54, 0.15);
+  border: 1px solid #f44336;
+  color: #ff6b6b;
+}
+
+.signup-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #2f8544 !important;
+}
+
 /* Footer */
 
 .signup-footer {
