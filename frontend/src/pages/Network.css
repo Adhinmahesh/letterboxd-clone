@@ -1,0 +1,518 @@
+/* Letterboxd Network Page Styles */
+.network-page {
+  background-color: #14181c;
+  color: #9ab;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding-bottom: 80px;
+}
+
+.network-page .navbar {
+  position: relative !important;
+  background-color: #14181c !important;
+  border-bottom: 1px solid #202830;
+  height: 80px;
+}
+
+/* Floating Toast Notification */
+.network-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #202830;
+  color: #00e054;
+  border: 1px solid #00e054;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* Profile Subnav Bar (Exact Match to Screenshot 2) */
+.network-subnav-container {
+  max-width: 950px;
+  margin: 30px auto 16px;
+  padding: 0 20px;
+}
+
+.network-profile-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1c232b;
+  border: 1px solid #283340;
+  border-radius: 3px;
+  padding: 8px 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.profile-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-bar-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #283440;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #89a;
+}
+
+.profile-bar-username-link {
+  text-decoration: none;
+}
+
+.profile-bar-username {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.profile-bar-username:hover {
+  color: #40bcf4;
+}
+
+.profile-bar-tabs {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.profile-bar-tabs a {
+  color: #89a;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.profile-bar-tabs a:hover {
+  color: #fff;
+}
+
+.profile-bar-tabs a.active-tab {
+  color: #fff;
+  font-weight: 700;
+}
+
+.profile-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subnav-icon-btn {
+  background: none;
+  border: none;
+  color: #678;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.subnav-icon-btn:hover {
+  color: #fff;
+}
+
+/* Main Container */
+.network-container {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Sub-tabs Row (FOLLOWING, FOLLOWERS, BLOCKED) + Sort Dropdown */
+.network-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid #202830;
+  padding-bottom: 8px;
+  margin-top: 14px;
+  margin-bottom: 16px;
+}
+
+.network-subtabs {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.network-tab-btn {
+  background: none;
+  border: none;
+  color: #00e054;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0 0 6px 0;
+  position: relative;
+  transition: color 0.15s;
+}
+
+.network-tab-btn:hover {
+  color: #fff;
+}
+
+.network-tab-btn.active {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* Sort dropdown */
+.network-sort-wrap {
+  position: relative;
+}
+
+.network-sort-btn {
+  background: none;
+  border: none;
+  color: #678;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.15s;
+}
+
+.network-sort-btn:hover {
+  color: #89a;
+}
+
+.network-sort-btn .arrow {
+  margin-left: 2px;
+  font-size: 9px;
+}
+
+.network-sort-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  background-color: #1e2630;
+  border: 1px solid #344050;
+  border-radius: 3px;
+  min-width: 140px;
+  z-index: 100;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.sort-item {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #89a;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.sort-item:hover {
+  background-color: #283442;
+  color: #fff;
+}
+
+.sort-item.active {
+  color: #00e054;
+  font-weight: 700;
+}
+
+/* Body 2-Column Layout */
+.network-body-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.network-main-column {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Main Box Container (Matching Screenshot 2) */
+.network-box-container {
+  background-color: #14181c;
+  border: 1px solid #232a32;
+  border-radius: 4px;
+}
+
+.network-box-container.empty-box {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.empty-box-text {
+  color: #678;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  margin: 0;
+}
+
+/* Members List */
+.network-members-list {
+  background-color: #14181c;
+  border: 1px solid #232a32;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.network-member-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid #1e2630;
+  gap: 16px;
+  transition: background-color 0.15s;
+}
+
+.network-member-row:last-child {
+  border-bottom: none;
+}
+
+.network-member-row:hover {
+  background-color: #181f26;
+}
+
+.member-row-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.member-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2c3846, #1c242c);
+  border: 1px solid #364452;
+  color: #8fa9b5;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.member-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.member-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.member-display-name {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.member-display-name:hover {
+  color: #40bcf4;
+}
+
+.member-badge {
+  background-color: #ff8000;
+  color: #14181c;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.member-username-slug {
+  color: #678;
+  font-size: 12px;
+}
+
+.member-bio {
+  color: #89a;
+  font-size: 12px;
+  margin: 3px 0;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.member-stats {
+  color: #678;
+  font-size: 11px;
+}
+
+.member-row-actions {
+  flex-shrink: 0;
+}
+
+.member-follow-btn {
+  background-color: #2c3440;
+  border: 1px solid #3b4654;
+  color: #9ab;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.15s;
+}
+
+.member-follow-btn:hover {
+  background-color: #3b4654;
+  color: #fff;
+}
+
+.member-follow-btn.following {
+  background-color: #1e2822;
+  border-color: #00e054;
+  color: #00e054;
+}
+
+.member-unblock-btn {
+  background-color: #2c3440;
+  border: 1px solid #3b4654;
+  color: #e06c75;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.15s;
+}
+
+.member-unblock-btn:hover {
+  background-color: #e06c75;
+  color: #fff;
+  border-color: #e06c75;
+}
+
+/* Right Sidebar: Pro Promo Card (Exact Match to Screenshot 2) */
+.network-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.network-promo-card {
+  background-color: #171c22;
+  border: 1px solid #232c36;
+  border-radius: 3px;
+  padding: 20px 18px;
+}
+
+.promo-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.promo-dots .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.promo-dots .dot.orange {
+  background-color: #ff8000;
+}
+
+.promo-dots .dot.green {
+  background-color: #00e054;
+}
+
+.promo-dots .dot.blue {
+  background-color: #40bcf4;
+}
+
+.promo-heading {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.3px;
+  margin: 0 0 16px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.promo-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+
+.promo-features-list li {
+  color: #d8ad69;
+  font-size: 12.5px;
+  line-height: 1.45;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.promo-action-btn {
+  background-color: #ff8000;
+  color: #14181c;
+  border: none;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 8px 14px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.promo-action-btn:hover {
+  background-color: #ff9426;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .network-body-layout {
+    flex-direction: column;
+  }
+  .network-sidebar {
+    width: 100%;
+  }
+  .network-profile-bar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .profile-bar-tabs {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
