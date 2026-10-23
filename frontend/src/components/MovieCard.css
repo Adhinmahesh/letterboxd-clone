@@ -1,6 +1,31 @@
+.movie-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .movie-card {
   width: 170px;
   flex-shrink: 0;
+}
+
+.movie-poster-fallback {
+  width: 170px;
+  height: 255px;
+  background-color: #1e242b;
+  border: 1px solid #2d3742;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #678;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.movie-card:hover .movie-poster-fallback {
+  transform: translateY(-5px);
+  border-color: #00c030;
 }
 
 .movie-poster {

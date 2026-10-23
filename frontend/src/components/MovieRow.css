@@ -11,20 +11,80 @@
   margin-bottom: 18px;
 }
 
+.section-heading-left {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .section-heading h2 {
   color: #ffffff;
   font-size: 20px;
   font-weight: 600;
+  margin: 0;
 }
 
-.section-heading a {
+.section-heading-subtitle {
+  color: #00e054;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.section-heading a,
+.section-more-link {
   color: #8c9297;
   font-size: 11px;
   font-weight: 700;
+  text-decoration: none;
+  transition: color 0.15s;
 }
 
-.section-heading a:hover {
-  color: #00c030;
+.section-heading a:hover,
+.section-more-link:hover {
+  color: #00e054;
+}
+
+.movie-row-loading {
+  display: flex;
+  gap: 18px;
+}
+
+.movie-card-skeleton {
+  width: 170px;
+  flex-shrink: 0;
+}
+
+.skeleton-poster {
+  width: 170px;
+  height: 255px;
+  background-color: #1e242b;
+  border-radius: 4px;
+  opacity: 0.7;
+}
+
+.skeleton-text {
+  background-color: #1e242b;
+  border-radius: 3px;
+  margin-top: 8px;
+  opacity: 0.6;
+}
+
+.skeleton-text.line1 {
+  height: 14px;
+  width: 80%;
+}
+
+.skeleton-text.line2 {
+  height: 12px;
+  width: 45%;
+}
+
+.movie-row-empty {
+  color: #678;
+  font-size: 14px;
+  padding: 30px 0;
 }
 
 .movie-row {
