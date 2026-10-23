@@ -1,513 +1,1263 @@
+/* Letterboxd Profile Page Styles */
 .profile-page {
+  background-color: #14181c;
+  color: #9ab;
   min-height: 100vh;
-  background: #14181c;
-  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   padding-bottom: 80px;
 }
 
-/* ---------------- HEADER ---------------- */
-
-.profile-header {
-  max-width: 1000px;
-  margin: 0 auto;
-
-  padding: 55px 30px 35px;
-
-  display: flex;
-  gap: 30px;
-
-  border-bottom: 1px solid #2c3338;
+.profile-page .navbar {
+  position: relative !important;
+  background-color: #14181c !important;
+  border-bottom: 1px solid #202830;
+  height: 80px;
 }
 
-.profile-avatar {
-  width: 110px;
-  height: 110px;
+.profile-loading {
+  max-width: 950px;
+  margin: 80px auto;
+  text-align: center;
+  color: #8fa9b5;
+}
 
+.profile-main-container {
+  max-width: 950px;
+  margin: 30px auto 0;
+  padding: 0 20px;
+}
+
+/* Header Card */
+.profile-header-card {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.profile-avatar-wrap {
   flex-shrink: 0;
+}
 
+.profile-avatar-circle {
+  width: 82px;
+  height: 82px;
   border-radius: 50%;
-
+  background: linear-gradient(135deg, #2c3846, #1c242c);
+  border: 2px solid #364452;
+  color: #8fa9b5;
+  font-size: 2.2rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background: #67849b;
-
-  color: #ffffff;
-
-  font-size: 45px;
-  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-.profile-info {
+.profile-name-area {
   flex: 1;
+  min-width: 0;
 }
 
-.profile-name-row {
+.profile-title-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-
-.profile-name-row h1 {
-  margin: 0;
-
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.username {
-  margin-top: 4px;
-
-  color: #8996a0;
-
-  font-size: 14px;
-}
-
-.profile-bio {
-  margin: 18px 0;
-
-  color: #b9c2c8;
-
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.follow-button {
-  padding: 10px 20px;
-
-  border: 0;
-  border-radius: 4px;
-
-  background: #00b020;
-
-  color: #ffffff;
-
-  font-size: 12px;
-  font-weight: 700;
-
-  cursor: pointer;
-}
-
-.follow-button:hover {
-  background: #00c526;
-}
-
-.follow-button.following {
-  background: #66747e;
-}
-
-/* ---------------- STATS ---------------- */
-
-.profile-stats {
-  display: flex;
-  gap: 35px;
-}
-
-.profile-stats div {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.profile-stats strong {
-  color: #ffffff;
-
-  font-size: 19px;
-}
-
-.profile-stats span {
-  color: #81909b;
-
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
-
-/* ---------------- TABS ---------------- */
-
-.profile-tabs {
-  max-width: 1000px;
-  margin: 0 auto;
-
-  padding: 0 30px;
-
-  display: flex;
-
-  overflow-x: auto;
-
-  border-bottom: 1px solid #2c3338;
-}
-
-.profile-tabs button {
-  padding: 18px 15px;
-
-  border: 0;
-
-  background: transparent;
-
-  color: #87939c;
-
-  font-size: 12px;
-  font-weight: 700;
-
-  cursor: pointer;
-}
-
-.profile-tabs button:hover {
-  color: #ffffff;
-}
-
-.profile-tabs button.active {
-  color: #ffffff;
-
-  border-bottom: 3px solid #00b020;
-}
-
-
-/* ---------------- CONTENT ---------------- */
-
-.profile-content {
-  max-width: 1000px;
-  margin: 0 auto;
-
-  padding: 35px 30px;
-}
-
-.profile-section {
-  margin-bottom: 45px;
-}
-
-.section-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin-bottom: 18px;
-}
-
-.section-title h2 {
-  margin: 0;
-
-  color: #ffffff;
-
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.section-title button,
-.section-title span {
-  border: 0;
-
-  background: transparent;
-
-  color: #71808a;
-
-  font-size: 11px;
-  font-weight: 700;
-
-  cursor: pointer;
-}
-
-.section-title button:hover,
-.section-title span:hover {
-  color: #ffffff;
-}
-
-
-/* ---------------- FAVORITES ---------------- */
-
-.favorite-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
-
-  gap: 15px;
-}
-
-.favorite-card {
-  overflow: hidden;
-
-  border-radius: 4px;
-
-  background: #1d2328;
-
-  aspect-ratio: 2 / 3;
-}
-
-.favorite-card img {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  object-fit: cover;
-
-  transition: transform 0.2s;
-}
-
-.favorite-card:hover img {
-  transform: scale(1.03);
-}
-
-
-/* ---------------- ACTIVITY ---------------- */
-
-.activity-list {
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
   gap: 12px;
+  flex-wrap: wrap;
 }
 
-.activity-item {
-  display: flex;
-
-  gap: 15px;
-
-  padding: 12px;
-
-  border-radius: 4px;
-
-  background: #1b2024;
+.profile-username-heading {
+  color: #fff;
+  font-family: 'Georgia', serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.3px;
 }
 
-.activity-item img {
-  width: 70px;
-  height: 105px;
-
-  object-fit: cover;
-
+.edit-profile-btn {
+  background-color: #283440;
+  border: 1px solid #364452;
+  color: #c8d6e0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 12px;
   border-radius: 3px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.15s;
 }
 
-.activity-info {
+.edit-profile-btn:hover {
+  background-color: #364452;
+  color: #fff;
+}
+
+.profile-follow-btn {
+  background-color: #2c3440;
+  border: 1px solid #3d4a58;
+  color: #9ab;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  transition: all 0.15s;
+}
+
+.profile-follow-btn:hover {
+  background-color: #3b4756;
+  color: #fff;
+}
+
+.profile-follow-btn.following {
+  background-color: #1a2720;
+  border-color: #00e054;
+  color: #00e054;
+}
+
+.profile-follow-btn.following:hover {
+  background-color: #281e22;
+  border-color: #e06c75;
+  color: #e06c75;
+}
+
+.profile-blocked-btn {
+  background-color: #2e1d22;
+  border: 1px solid #5a2630;
+  color: #ff6b6b;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  transition: all 0.15s;
+}
+
+.profile-blocked-btn:hover {
+  background-color: #44242c;
+  color: #fff;
+}
+
+/* More options wrap and dropdown */
+.profile-more-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-more-btn {
+  background: #252e38;
+  border: 1px solid #344050;
+  color: #89a;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
   display: flex;
-  flex-direction: column;
-
-  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  cursor: pointer;
+  letter-spacing: -1px;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }
 
-.activity-info h3 {
-  margin: 0;
-
-  font-size: 15px;
+.profile-more-btn:hover {
+  border-color: #4a5c70;
+  background: #313d4b;
+  color: #fff;
 }
 
-.activity-info p {
-  margin: 0;
+.profile-more-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  background-color: #1c232b;
+  border: 1px solid #344050;
+  border-radius: 4px;
+  min-width: 170px;
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
 
-  color: #74808a;
-
+.more-menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #9ab;
+  padding: 10px 14px;
   font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
 }
 
-.activity-rating {
-  color: #00c030;
-
-  font-size: 14px;
-  letter-spacing: 1px;
+.more-menu-item:hover {
+  background-color: #27313d;
+  color: #fff;
 }
 
-.activity-info span {
-  margin-top: auto;
-
-  color: #69757e;
-
-  font-size: 11px;
+.more-menu-item.danger {
+  color: #ff6b6b;
 }
 
+.more-menu-item.danger:hover {
+  background-color: #381f25;
+  color: #ff8585;
+}
 
-/* ---------------- REVIEW ---------------- */
-
-.review-card {
+/* Blocked member alert banner */
+.profile-blocked-banner {
   display: flex;
-
-  gap: 22px;
-
-  padding: 20px;
-
-  background: #1b2024;
-
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1f1619;
+  border: 1px solid #48232c;
   border-radius: 4px;
-}
-
-.review-poster img {
-  width: 100px;
-
-  aspect-ratio: 2 / 3;
-
-  object-fit: cover;
-
-  border-radius: 3px;
-}
-
-.review-content {
-  padding-top: 2px;
-}
-
-.review-content h3 {
-  margin: 0;
-
-  font-size: 20px;
-}
-
-.review-year {
-  margin: 4px 0;
-
-  color: #74808a;
-
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  color: #ff8585;
   font-size: 13px;
 }
 
-.review-stars {
-  margin: 8px 0;
-
-  color: #00c030;
-
-  letter-spacing: 2px;
-}
-
-.review-text {
-  max-width: 600px;
-
-  margin: 12px 0;
-
-  color: #bdc5ca;
-
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.review-date {
-  color: #69757e;
-
+.unblock-inline-btn {
+  background-color: #2c3440;
+  border: 1px solid #435162;
+  color: #fff;
   font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background-color 0.15s;
 }
 
+.unblock-inline-btn:hover {
+  background-color: #3b4756;
+}
 
-/* ---------------- WATCHLIST ---------------- */
+/* Profile toast notification */
+.profile-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #202830;
+  color: #00e054;
+  border: 1px solid #00e054;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
 
-.watchlist-grid {
-  display: grid;
+.profile-bio-text {
+  color: #8fa9b5;
+  font-size: 0.85rem;
+  margin: 6px 0 0;
+  line-height: 1.4;
+}
 
-  grid-template-columns:
-    repeat(5, minmax(0, 1fr));
+.profile-meta-row {
+  display: flex;
+  gap: 16px;
+  font-size: 0.76rem;
+  color: #678;
+  margin-top: 6px;
+}
 
+.profile-website {
+  color: #40bcf4;
+  text-decoration: none;
+}
+
+.profile-website:hover {
+  text-decoration: underline;
+}
+
+/* Stats Counters */
+.profile-stats-counters {
+  display: flex;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.stat-counter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.1s;
+}
+
+.stat-counter-item:hover {
+  transform: translateY(-2px);
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  color: #678;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+/* Subnav Tabs */
+.profile-subnav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #202830;
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
-.watchlist-card {
-  aspect-ratio: 2 / 3;
-
-  overflow: hidden;
-
-  border-radius: 4px;
+.profile-subnav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.watchlist-card img {
+.profile-tab {
+  color: #8fa9b5;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding-bottom: 4px;
+  transition: color 0.15s;
+}
+
+.profile-tab:hover {
+  color: #fff;
+}
+
+.profile-tab.active {
+  color: #fff;
+  border-bottom: 2px solid #00e054;
+}
+
+.profile-subnav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subnav-circle-btn {
+  background: transparent;
+  border: 1px solid #283440;
+  color: #678;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.subnav-circle-btn:hover {
+  color: #40bcf4;
+  border-color: #40bcf4;
+}
+
+/* 2-Column Body Layout */
+.profile-columns {
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+}
+
+.profile-main-column {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.profile-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Section Common */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #202830;
+  padding-bottom: 6px;
+}
+
+.section-title {
+  color: #8fa9b5;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.section-action-link {
+  color: #678;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.section-action-link:hover {
+  color: #fff;
+}
+
+.likes-heart-link {
+  color: #8fa9b5;
+}
+
+/* Favorite Films */
+.favorite-films-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.favorite-film-card {
+  aspect-ratio: 2/3;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #283440;
+  background-color: #1a2228;
+  display: block;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.favorite-film-card:hover {
+  transform: translateY(-3px);
+  border-color: #00e054;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.favorite-film-card img {
   width: 100%;
   height: 100%;
-
-  display: block;
-
   object-fit: cover;
-
-  transition: transform 0.2s;
+  display: block;
 }
 
-.watchlist-card:hover img {
-  transform: scale(1.03);
-}
-
-
-/* ---------------- OTHER TABS ---------------- */
-
-.empty-profile-tab {
-  max-width: 1000px;
-
-  margin: 0 auto;
-
-  padding: 80px 30px;
-
+.fav-no-poster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: #8fa9b5;
+  font-size: 0.72rem;
   text-align: center;
 }
 
-.empty-profile-tab h2 {
-  margin-bottom: 10px;
-
-  font-size: 22px;
+.favorite-films-empty {
+  background-color: #161c21;
+  border: 1px dashed #242d36;
+  border-radius: 4px;
+  padding: 24px;
+  text-align: center;
+  color: #678;
+  font-size: 0.82rem;
 }
 
-.empty-profile-tab p {
-  color: #78858e;
-
-  font-size: 14px;
+.favorite-films-empty a {
+  color: #00e054;
+  text-decoration: underline;
+  font-weight: 600;
 }
 
+/* Recent Likes */
+.recent-likes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
 
-/* ---------------- RESPONSIVE ---------------- */
+.recent-like-card {
+  aspect-ratio: 2/3;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #283440;
+  background-color: #1a2228;
+  display: block;
+  transition: transform 0.15s, border-color 0.15s;
+}
 
-@media (max-width: 700px) {
+.recent-like-card:hover {
+  transform: translateY(-3px);
+  border-color: #00e054;
+}
 
-  .profile-header {
-    padding: 35px 20px;
+.recent-like-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-    gap: 18px;
-  }
+.recent-like-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  font-size: 0.72rem;
+  color: #678;
+  text-align: center;
+}
 
-  .profile-avatar {
-    width: 75px;
-    height: 75px;
+.recent-like-slot-empty {
+  aspect-ratio: 2/3;
+  border-radius: 4px;
+  border: 1px solid #202830;
+  background-color: #171d22;
+}
 
-    font-size: 30px;
-  }
+.profile-empty-section {
+  color: #678;
+  font-size: 0.82rem;
+  padding: 16px 0;
+}
 
-  .profile-name-row {
+/* Recent Reviews */
+.recent-reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-review-card {
+  display: flex;
+  gap: 16px;
+  background-color: #161c21;
+  border: 1px solid #222b34;
+  border-radius: 4px;
+  padding: 14px;
+}
+
+.review-poster-thumb {
+  width: 52px;
+  height: 78px;
+  flex-shrink: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #12161a;
+  display: block;
+}
+
+.review-poster-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.review-no-poster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+.review-main-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.review-title-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.review-film-name {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.review-film-name:hover {
+  color: #00e054;
+}
+
+.review-film-year {
+  color: #678;
+  font-size: 0.78rem;
+}
+
+.review-rating-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+}
+
+.review-stars-green {
+  color: #00e054;
+  letter-spacing: 0.5px;
+}
+
+.review-liked-heart {
+  color: #ff8000;
+  font-size: 0.85rem;
+}
+
+.review-rewatched-tag {
+  color: #678;
+  font-size: 0.7rem;
+}
+
+.review-date-text {
+  color: #556677;
+  font-size: 0.72rem;
+}
+
+.review-text-content {
+  color: #8fa9b5;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin: 4px 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.review-likes-count {
+  color: #678;
+  font-size: 0.72rem;
+  margin-top: 2px;
+}
+
+/* Sidebar Widgets */
+.profile-promo-box {
+  background: linear-gradient(135deg, #1c2630, #22303e);
+  border: 1px solid #2d3e50;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.promo-title {
+  color: #ff8000;
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: block;
+}
+
+.promo-desc {
+  color: #8fa9b5;
+  font-size: 0.74rem;
+  margin: 6px 0 10px;
+  line-height: 1.35;
+}
+
+.promo-btn {
+  background-color: #ff8000;
+  color: #14181c;
+  font-weight: 800;
+  border: none;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.sidebar-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid #202830;
+  padding-top: 12px;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widget-title {
+  color: #678;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.widget-title:hover {
+  color: #fff;
+}
+
+.widget-count {
+  color: #8fa9b5;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.widget-watchlist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.widget-poster-slot {
+  aspect-ratio: 2/3;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #1a2228;
+  border: 1px solid #263340;
+  display: block;
+}
+
+.widget-poster-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.widget-poster-slot.empty {
+  border-style: dashed;
+  border-color: #222b34;
+  background-color: #151a1e;
+}
+
+.widget-empty-poster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.widget-empty-note {
+  color: #556677;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.diary-entry-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.diary-calendar-badge {
+  background-color: #202830;
+  border: 1px solid #2d3844;
+  border-radius: 3px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cal-month {
+  color: #678;
+  font-size: 0.55rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.cal-day {
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.diary-entry-title {
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Ratings Histogram */
+.ratings-chart-wrap {
+  background-color: #182026;
+  border: 1px solid #242e38;
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+
+.ratings-bars-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 42px;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #222b34;
+}
+
+.rating-bar-col {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.rating-bar-fill {
+  width: 100%;
+  background-color: #00e054;
+  border-radius: 2px 2px 0 0;
+  transition: height 0.3s ease-out;
+}
+
+.ratings-labels-row {
+  display: flex;
+  justify-content: space-between;
+  color: #556677;
+  font-size: 0.68rem;
+  margin-top: 4px;
+}
+
+/* Activity Timeline */
+.activity-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.activity-bullet {
+  color: #00e054;
+  font-size: 0.65rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.activity-text {
+  color: #8fa9b5;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.activity-time {
+  color: #556677;
+  font-size: 0.7rem;
+  margin-left: 4px;
+}
+
+@media (max-width: 800px) {
+  .profile-header-card {
+    flex-direction: column;
     align-items: flex-start;
   }
 
-  .profile-name-row h1 {
-    font-size: 23px;
+  .profile-stats-counters {
+    width: 100%;
+    justify-content: space-around;
   }
 
-  .follow-button {
-    padding: 8px 12px;
+  .profile-columns,
+  .featured-list-layout {
+    flex-direction: column;
   }
 
-  .profile-bio {
-    font-size: 13px;
+  .profile-sidebar,
+  .featured-list-comments-sidebar {
+    width: 100%;
   }
 
-  .profile-stats {
-    gap: 20px;
+  .profile-subnav-tabs {
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
-  .profile-tabs {
-    padding: 0 15px;
+  .collage-grid-wrap {
+    flex-direction: column;
   }
+}
 
-  .profile-content {
-    padding: 30px 20px;
-  }
+/* ========================================================
+   Cinematic Backdrop Hero Banner (Matching Screenshot 1)
+   ======================================================== */
+.profile-backdrop-hero {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  background-color: #0d1114;
+}
 
-  .favorite-grid {
-    grid-template-columns:
-      repeat(4, minmax(0, 1fr));
+.profile-backdrop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  opacity: 0.85;
+  filter: brightness(0.9);
+}
 
-    gap: 7px;
-  }
+.profile-backdrop-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 24, 28, 0.15) 0%,
+    rgba(20, 24, 28, 0.4) 50%,
+    rgba(20, 24, 28, 0.9) 85%,
+    #14181c 100%
+  );
+  pointer-events: none;
+}
 
-  .activity-list {
-    grid-template-columns: 1fr;
-  }
+.profile-main-container.has-backdrop {
+  margin-top: -100px;
+  position: relative;
+  z-index: 10;
+}
 
-  .watchlist-grid {
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
-  }
+/* ========================================================
+   Official Lists Badge & Avatar
+   ======================================================== */
+.profile-avatar-circle.official-avatar {
+  background: #192026;
+  border: 2px solid #283440;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
 
+.official-avatar-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.official-avatar-dots .dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.official-avatar-dots .dot.orange { background-color: #ff8000; }
+.official-avatar-dots .dot.green { background-color: #00e054; }
+.official-avatar-dots .dot.blue { background-color: #40bcf4; }
+
+.profile-hq-badge {
+  background-color: #2c5980;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  margin-left: 4px;
+}
+
+.profile-follow-btn.following {
+  background-color: #2c3846;
+  color: #c8d6e0;
+}
+
+/* ========================================================
+   Featured List Showcase Section (Matching Screenshot 1)
+   ======================================================== */
+.profile-featured-list-section {
+  margin-top: 24px;
+  margin-bottom: 40px;
+  border-top: 1px solid #202830;
+  padding-top: 20px;
+}
+
+.featured-list-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.featured-list-title {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.full-list-link {
+  color: #678;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.full-list-link:hover {
+  color: #00e054;
+}
+
+/* 2-Column Layout */
+.featured-list-layout {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.featured-list-left {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 9-Poster Collage Grid (1 Large on Left + 8 in 4x2 on Right) */
+.featured-list-collage {
+  margin-bottom: 16px;
+}
+
+.collage-grid-wrap {
+  display: flex;
+  gap: 6px;
+  height: 260px;
+}
+
+.collage-item {
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #1a222a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s, border-color 0.15s;
+  display: block;
+  text-decoration: none;
+}
+
+.collage-item:hover {
+  border-color: #00e054;
+  transform: translateY(-2px);
+  z-index: 5;
+}
+
+.collage-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.collage-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #678;
+  font-size: 0.72rem;
+  padding: 6px;
+  text-align: center;
+}
+
+/* Main #1 Feature Poster */
+.collage-item-main {
+  width: 174px;
+  height: 260px;
+  flex-shrink: 0;
+}
+
+.collage-rank-overlay {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+/* 8 Smaller Posters (4 columns x 2 rows) */
+.collage-subgrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 6px;
+  height: 260px;
+}
+
+.collage-item-sub {
+  height: 100%;
+  width: 100%;
+}
+
+/* Curated Description / Notes box */
+.featured-list-description-card {
+  color: #8fa9b5;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  margin-top: 8px;
+}
+
+.featured-list-desc-text {
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* ========================================================
+   Comments & Community Discussion Sidebar (Right Column)
+   ======================================================== */
+.featured-list-comments-sidebar {
+  width: 320px;
+  flex-shrink: 0;
+}
+
+.comments-widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #202830;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.comments-count-text {
+  color: #8fa9b5;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.comments-bell-icon {
+  color: #556677;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.comments-bell-icon:hover {
+  color: #00e054;
+}
+
+.comments-subtext-header {
+  color: #678;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+.featured-comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.featured-comment-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.comment-avatar-bubble {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #364452, #202a34);
+  border: 1px solid #3c4c5c;
+  color: #8fa9b5;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.comment-bubble-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 3px;
+  flex-wrap: wrap;
+}
+
+.comment-user-title {
+  color: #c8d4dc;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.comment-badge-crew {
+  background-color: #2c5980;
+  color: #fff;
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.comment-timestamp {
+  color: #556677;
+  font-size: 0.68rem;
+  margin-left: auto;
+}
+
+.comment-message {
+  color: #8fa9b5;
+  font-size: 0.73rem;
+  line-height: 1.4;
+  margin: 0;
 }

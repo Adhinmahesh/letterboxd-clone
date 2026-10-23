@@ -5,10 +5,17 @@
   font-family: 'Graphik', 'Arial', sans-serif;
 }
 
+.search-page .navbar {
+  position: relative !important;
+  background-color: #14181c !important;
+  border-bottom: 1px solid #202830;
+  height: 80px;
+}
+
 .search-content {
   max-width: 950px;
   margin: 0 auto;
-  padding: 100px 20px 40px;
+  padding: 36px 20px 60px;
 }
 
 .search-content h2 {
