@@ -14,10 +14,12 @@ const interactionSchema = new mongoose.Schema({
   liked: { type: Boolean, default: false },
   watchlist: { type: Boolean, default: false },
   watched: { type: Boolean, default: false },
-  rating: { type: Number, min: 1, max: 5 },
+  rating: { type: Number, min: 0, max: 5, default: null },
   review: { type: String },
   reviewLikes: { type: [String], default: [] },
-  replies: [replySchema]
+  replies: [replySchema],
+  watchedDate: { type: Date },
+  rewatch: { type: Boolean, default: false }
 }, { timestamps: true });
 
 // Ensure a user can only have one interaction record per movie

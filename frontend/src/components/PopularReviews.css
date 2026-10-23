@@ -210,21 +210,56 @@
   overflow: hidden;
   border: 1px solid #30383f;
   border-radius: 2px;
+  background-color: #1a2026;
 }
 
 .list-posters img {
-  width: 25%;
+  flex: 1;
+  min-width: 0;
   height: 100%;
-
   object-fit: cover;
+  border-right: 1px solid #14181c;
+}
+
+.list-posters img:last-child {
+  border-right: none;
+}
+
+.list-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.list-card-link:hover h3 {
+  color: #40bcf4;
+}
+
+.list-poster-placeholder {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  background-color: #242c34;
+  border-right: 1px solid #1a2026;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #678;
+}
+
+.list-poster-placeholder.empty-full {
+  width: 100%;
+  border-right: none;
+  font-size: 0.85rem;
 }
 
 .list-card h3 {
   margin: 9px 0 5px;
-
   color: #ffffff;
   font-size: 15px;
   line-height: 1.25;
+  transition: color 0.15s;
 }
 
 .list-creator {
@@ -268,14 +303,23 @@
   flex-direction: column;
 }
 
+.reviewer-item-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.reviewer-item-link:hover .reviewer strong {
+  color: #00e054;
+}
+
 .reviewer {
   display: flex;
   align-items: center;
   gap: 10px;
-
   padding: 11px 0;
-
   border-bottom: 1px solid #293037;
+  transition: background-color 0.15s;
 }
 
 .reviewer-avatar {

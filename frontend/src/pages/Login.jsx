@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Login.css'
 
 function Login() {
@@ -25,6 +25,7 @@ function Login() {
       
       localStorage.setItem('token', data.token)
       localStorage.setItem('username', data.user.username)
+      localStorage.setItem('userId', data.user.id)
       navigate('/') // Redirect to home page
     } catch (err) {
       setError(err.message)
@@ -47,7 +48,7 @@ function Login() {
 
             <div className="signup-prompt">
               <span>New to Letterboxd?</span>
-              <a href="/signup">Create an account</a>
+              <Link to="/signup">Create an account</Link>
             </div>
 
             <form className="login-form" onSubmit={handleSubmit}>
@@ -94,9 +95,9 @@ function Login() {
                   <span>Remember me</span>
                 </label>
 
-                <a href="/reset-password">
+                <Link to="/reset-password">
                   Reset password
-                </a>
+                </Link>
               </div>
 
               <button type="submit" className="login-button">

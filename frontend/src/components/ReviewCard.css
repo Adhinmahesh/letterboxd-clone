@@ -11,16 +11,36 @@
 
 /* POSTER */
 
+.review-poster-link {
+  flex-shrink: 0;
+  display: block;
+}
+
 .review-poster {
   width: 82px;
   height: 123px;
-
-  flex-shrink: 0;
-
+  display: block;
   object-fit: cover;
   border-radius: 2px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease;
 }
 
+.review-poster:hover {
+  transform: scale(1.03);
+}
+
+.review-poster-fallback {
+  width: 82px;
+  height: 123px;
+  background-color: #242c34;
+  border: 1px solid #303a45;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
 
 /* CONTENT */
 
@@ -28,7 +48,6 @@
   flex: 1;
   min-width: 0;
 }
-
 
 /* MOVIE TITLE */
 
@@ -38,14 +57,22 @@
   gap: 8px;
 }
 
+.review-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .review-title h3 {
   margin: 0;
-
   color: #ffffff;
-
-  font-family: Georgia,serif;
+  font-family: Georgia, serif;
   font-size: 20px;
   font-weight: 700;
+  transition: color 0.15s;
+}
+
+.review-title-link:hover h3 {
+  color: #40bcf4;
 }
 
 .review-title span {
@@ -53,15 +80,42 @@
   font-size: 14px;
 }
 
-
 /* USER */
 
 .review-user {
   display: flex;
   align-items: center;
   gap: 7px;
-
   margin-top: 9px;
+}
+
+.user-avatar-link,
+.user-name-link {
+  text-decoration: none;
+}
+
+.user-name-link:hover strong {
+  color: #00e054;
+}
+
+.review-text-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.review-text-link:hover p {
+  color: #c4d8ea;
+}
+
+.review-likes-link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.15s;
+}
+
+.review-likes-link:hover {
+  color: #ff9d25;
 }
 
 .user-avatar {
