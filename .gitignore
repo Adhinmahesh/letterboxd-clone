@@ -7,5 +7,6 @@ dist/
 backend/.env
 frontend/.env
 !.env.example
+!**/.env.example
 .DS_Store
 *.log.vite/
