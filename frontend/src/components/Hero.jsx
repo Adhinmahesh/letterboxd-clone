@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Hero.css'
 
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY
@@ -20,15 +20,11 @@ function Hero() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [loadedUrls, setLoadedUrls] = useState({})
   const [failedUrls, setFailedUrls] = useState({})
-  const [nextReady, setNextReady] = useState(false)
 
   const activeBackdrop = backdrops[activeIndex]
   const displayedBackdrop = activeBackdrop && loadedUrls[activeBackdrop.url] && !failedUrls[activeBackdrop.url]
-    ? activeBackdrop.url
-    : ''
-
-  const nextIndex = backdrops.length > 0 ? (activeIndex + 1) % backdrops.length : 0
-  const nextBackdrop = backdrops[nextIndex]
+    ? activeBackdrop
+    : null
 
   useEffect(() => {
     let cancelled = false
@@ -40,7 +36,6 @@ function Hero() {
       }
 
       try {
-        // Fetch multiple popular pages, then prefer films with vote history and landscape images.
         const pages = await Promise.all([1, 2, 3].map(async (page) => {
           const response = await fetch(
             `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API_KEY}&language=en-US&page=${page}`
@@ -59,11 +54,7 @@ function Hero() {
         })
 
         const pool = [...uniqueMovies.values()]
-          .sort((a, b) => {
-            const popularityDifference = (b.popularity || 0) - (a.popularity || 0)
-            if (popularityDifference !== 0) return popularityDifference
-            return (b.vote_count || 0) - (a.vote_count || 0)
-          })
+          .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
           .slice(0, BACKDROP_POOL_SIZE)
           .map((movie) => ({
             id: movie.id,
@@ -76,7 +67,6 @@ function Hero() {
         }
       } catch (error) {
         console.error('Unable to load hero backdrops from TMDB:', error)
-        // CSS provides a plain dark background if TMDB cannot be reached.
       }
     }
 
@@ -86,22 +76,27 @@ function Hero() {
     }
   }, [])
 
-  // Preload the current image and keep the previous background until it is ready.
+  // Preload each backdrop before displaying it.
   useEffect(() => {
     if (!activeBackdrop?.url || loadedUrls[activeBackdrop.url] || failedUrls[activeBackdrop.url]) {
-      return
+      return undefined
     }
 
     let cancelled = false
     const image = new Image()
+
     image.onload = () => {
-      if (cancelled) return
-      setLoadedUrls((previous) => ({ ...previous, [activeBackdrop.url]: true }))
+      if (!cancelled) {
+        setLoadedUrls((previous) => ({ ...previous, [activeBackdrop.url]: true }))
+      }
     }
+
     image.onerror = () => {
-      if (cancelled) return
-      setFailedUrls((previous) => ({ ...previous, [activeBackdrop.url]: true }))
+      if (!cancelled) {
+        setFailedUrls((previous) => ({ ...previous, [activeBackdrop.url]: true }))
+      }
     }
+
     image.src = activeBackdrop.url
 
     return () => {
@@ -109,32 +104,36 @@ function Hero() {
     }
   }, [activeBackdrop, loadedUrls, failedUrls])
 
-  // Preload the next backdrop before the rotation timer reaches it.
+  // Warm the next image while the current one is visible.
   useEffect(() => {
-    if (!nextBackdrop?.url || nextIndex === activeIndex) return
+    if (backdrops.length < 2) return undefined
+
+    const nextBackdrop = backdrops[(activeIndex + 1) % backdrops.length]
+    if (!nextBackdrop?.url || loadedUrls[nextBackdrop.url] || failedUrls[nextBackdrop.url]) {
+      return undefined
+    }
 
     let cancelled = false
-    setNextReady(Boolean(loadedUrls[nextBackdrop.url]))
-
-    if (loadedUrls[nextBackdrop.url] || failedUrls[nextBackdrop.url]) return
-
     const image = new Image()
+
     image.onload = () => {
-      if (cancelled) return
-      setLoadedUrls((previous) => ({ ...previous, [nextBackdrop.url]: true }))
-      setNextReady(true)
+      if (!cancelled) {
+        setLoadedUrls((previous) => ({ ...previous, [nextBackdrop.url]: true }))
+      }
     }
+
     image.onerror = () => {
-      if (cancelled) return
-      setFailedUrls((previous) => ({ ...previous, [nextBackdrop.url]: true }))
-      setNextReady(false)
+      if (!cancelled) {
+        setFailedUrls((previous) => ({ ...previous, [nextBackdrop.url]: true }))
+      }
     }
+
     image.src = nextBackdrop.url
 
     return () => {
       cancelled = true
     }
-  }, [nextBackdrop, nextIndex, activeIndex, loadedUrls, failedUrls])
+  }, [backdrops, activeIndex, loadedUrls, failedUrls])
 
   useEffect(() => {
     if (backdrops.length < 2) return undefined
@@ -150,23 +149,23 @@ function Hero() {
         }
         return current
       })
-      setNextReady(false)
     }, ROTATION_INTERVAL_MS)
 
     return () => window.clearInterval(timer)
   }, [backdrops, loadedUrls, failedUrls])
 
-  const heroStyle = useMemo(
-    () => displayedBackdrop ? { backgroundImage: `url("${displayedBackdrop}")` } : undefined,
-    [displayedBackdrop]
-  )
-
   return (
-    <section
-      className={`hero${displayedBackdrop ? ' hero-has-backdrop' : ''}`}
-      style={heroStyle}
-      aria-label="Letterboxd film discovery"
-    >
+    <section className="hero" aria-label="Letterboxd film discovery">
+      {displayedBackdrop && (
+        <div
+          key={displayedBackdrop.id}
+          className="hero-backdrop"
+          style={{ backgroundImage: `url("${displayedBackdrop.url}")` }}
+          role="img"
+          aria-label={`Popular film backdrop: ${displayedBackdrop.title}`}
+        />
+      )}
+
       <div className="hero-overlay"></div>
 
       <div className="hero-content">
