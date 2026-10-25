@@ -189,20 +189,18 @@ function Settings() {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="settings-subtabs-row">
-          <div className="settings-subtabs">
-            {['PROFILE', 'AUTH', 'AVATAR', 'CONNECTIONS', 'NOTIFICATIONS', 'STORES & STREAMING', 'DATA'].map(tab => (
-              <span
-                key={tab}
-                className={`settings-subtab ${activeTab === tab ? 'active' : ''}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab}
-              </span>
-            ))}
-          </div>
-          <button type="button" className="deactivate-link">Deactivate account</button>
-        </div>
+       <div className="settings-subtabs-row">
+  <div className="settings-subtabs">
+    <span className="settings-subtab active">
+      PROFILE
+    </span>
+  </div>
+
+  <button type="button" className="deactivate-link">
+    Deactivate account
+  </button>
+</div>
+
 
         {errorMsg && <div className="settings-error-banner">{errorMsg}</div>}
 
