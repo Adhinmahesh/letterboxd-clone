@@ -64,7 +64,7 @@ function Members() {
         params.append('q', query.trim())
       }
 
-      const res = await fetch(`http://localhost:5000/api/auth/members?${params.toString()}`, { headers })
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/auth/members?${params.toString()}`, { headers })
       const data = await res.json()
 
       if (res.ok && Array.isArray(data.members)) {
@@ -128,7 +128,7 @@ function Members() {
     setFollowLoading(prev => ({ ...prev, [targetUser]: true }))
 
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/user/${targetUser}/${endpoint}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/auth/user/${targetUser}/${endpoint}`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`

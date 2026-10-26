@@ -34,7 +34,7 @@ function Signup() {
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/send-signup-otp', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/auth/send-signup-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -63,7 +63,7 @@ function Signup() {
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/send-signup-otp', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/auth/send-signup-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -96,7 +96,7 @@ function Signup() {
 
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:5000/api/auth/register', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

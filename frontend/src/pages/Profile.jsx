@@ -46,7 +46,7 @@ function Profile({ defaultTab }) {
   const fetchProfileSummary = async () => {
     try {
       setLoading(true)
-      const res = await fetch(`http://localhost:5000/api/auth/user/${username}/summary`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/auth/user/${username}/summary`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       })
       const data = await res.json()
@@ -151,8 +151,8 @@ function Profile({ defaultTab }) {
     setActionLoading(true)
 
     const endpoint = isFollowing
-      ? `http://localhost:5000/api/auth/user/${username}/unfollow`
-      : `http://localhost:5000/api/auth/user/${username}/follow`
+      ? `https://letterboxd-clone-l6rs.onrender.com/api/auth/user/${username}/unfollow`
+      : `https://letterboxd-clone-l6rs.onrender.com/api/auth/user/${username}/follow`
 
     try {
       const res = await fetch(endpoint, {
@@ -193,8 +193,8 @@ function Profile({ defaultTab }) {
     setActionLoading(true)
 
     const endpoint = isBlocked
-      ? `http://localhost:5000/api/auth/user/${username}/unblock`
-      : `http://localhost:5000/api/auth/user/${username}/block`
+      ? `https://letterboxd-clone-l6rs.onrender.com/api/auth/user/${username}/unblock`
+      : `https://letterboxd-clone-l6rs.onrender.com/api/auth/user/${username}/block`
 
     try {
       const res = await fetch(endpoint, {

@@ -105,7 +105,7 @@ function Watchlist() {
         return
       }
 
-      const res = await fetch('http://localhost:5000/api/interactions/user/watchlist', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions/user/watchlist', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       const data = await res.json()
@@ -143,7 +143,7 @@ function Watchlist() {
     }
 
     try {
-      await fetch('http://localhost:5000/api/interactions', {
+      await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json', 
@@ -168,7 +168,7 @@ function Watchlist() {
 
     try {
       const movieIdStr = movie.id.toString()
-      const res = await fetch('http://localhost:5000/api/interactions', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json', 
@@ -288,7 +288,7 @@ function Watchlist() {
 
         if (match) {
           // Add to backend watchlist
-          const saveRes = await fetch('http://localhost:5000/api/interactions', {
+          const saveRes = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

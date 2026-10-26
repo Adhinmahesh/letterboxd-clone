@@ -76,7 +76,7 @@ function ListDetail() {
 
   const fetchUserWatched = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/interactions/user/watched', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions/user/watched', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       if (res.ok) {
@@ -114,7 +114,7 @@ function ListDetail() {
     try {
       setLoading(true)
       const headers = token ? { 'Authorization': `Bearer ${token}` } : {}
-      const res = await fetch(`http://localhost:5000/api/lists/${listParam}`, { headers })
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/${listParam}`, { headers })
       const data = await res.json()
       if (res.ok) {
         setList(data)
@@ -144,7 +144,7 @@ function ListDetail() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/api/lists/${list?._id || listParam}/like`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/${list?._id || listParam}/like`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -162,7 +162,7 @@ function ListDetail() {
     if (!token) return
     const nextVis = list.visibility === 'public' ? 'private' : 'public'
     try {
-      const res = await fetch(`http://localhost:5000/api/lists/${list._id}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/${list._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -187,7 +187,7 @@ function ListDetail() {
     }
     try {
       setCloning(true)
-      const res = await fetch(`http://localhost:5000/api/lists/${list._id}/clone`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/${list._id}/clone`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -215,7 +215,7 @@ function ListDetail() {
     }
     try {
       setImporting(true)
-      const res = await fetch(`http://localhost:5000/api/lists/${list._id}/import-to-watchlist`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/${list._id}/import-to-watchlist`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -255,7 +255,7 @@ function ListDetail() {
     })
 
     try {
-      await fetch('http://localhost:5000/api/interactions', {
+      await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -292,7 +292,7 @@ function ListDetail() {
 
     try {
       setSubmittingComment(true)
-      const res = await fetch(`http://localhost:5000/api/lists/${list._id}/comments`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/${list._id}/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -322,7 +322,7 @@ function ListDetail() {
     if (!window.confirm('Are you sure you want to delete this comment?')) return
 
     try {
-      const res = await fetch(`http://localhost:5000/api/lists/${list._id}/comments/${commentId}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/${list._id}/comments/${commentId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

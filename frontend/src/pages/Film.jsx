@@ -78,7 +78,7 @@ function Film() {
 
   const fetchUserInteraction = () => {
     if (!token || !tmdbId) return
-    fetch(`http://localhost:5000/api/interactions/${tmdbId}`, {
+    fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/${tmdbId}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -95,7 +95,7 @@ function Film() {
 
   const fetchActivityStats = () => {
     if (!tmdbId) return
-    fetch(`http://localhost:5000/api/interactions/movie/${tmdbId}/activity`)
+    fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/movie/${tmdbId}/activity`)
       .then(res => res.json())
       .then(data => {
         if (data) setActivityData(data)
@@ -115,7 +115,7 @@ function Film() {
       watchedCount: Math.max(0, (prev?.watchedCount || 0) + (nextState ? 1 : -1))
     }))
     try {
-      await fetch('http://localhost:5000/api/interactions', {
+      await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -149,7 +149,7 @@ function Film() {
       likedCount: Math.max(0, (prev?.likedCount || 0) + (nextState ? 1 : -1))
     }))
     try {
-      await fetch('http://localhost:5000/api/interactions', {
+      await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -183,7 +183,7 @@ function Film() {
       watchlistCount: Math.max(0, (prev?.watchlistCount || 0) + (nextState ? 1 : -1))
     }))
     try {
-      await fetch('http://localhost:5000/api/interactions', {
+      await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -220,7 +220,7 @@ function Film() {
       }))
     }
     try {
-      await fetch('http://localhost:5000/api/interactions', {
+      await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -246,7 +246,7 @@ function Film() {
     setShowAddToListModal(true)
     setLoadingUserLists(true)
     try {
-      const res = await fetch(`http://localhost:5000/api/lists/user/${username}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/user/${username}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       const data = await res.json()
@@ -260,7 +260,7 @@ function Film() {
 
   const toggleFilmInList = async (listId) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/lists/${listId}/add-film`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/${listId}/add-film`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -284,7 +284,7 @@ function Film() {
 
   const fetchReviews = () => {
     fetch(
-      `http://localhost:5000/api/interactions/movie/${tmdbId}/reviews`
+      `https://letterboxd-clone-l6rs.onrender.com/api/interactions/movie/${tmdbId}/reviews`
     )
       .then(res => res.json())
       .then(data => {
@@ -544,7 +544,7 @@ function Film() {
 
     try {
       const response = await fetch(
-        'http://localhost:5000/api/interactions',
+        'https://letterboxd-clone-l6rs.onrender.com/api/interactions',
         {
           method: 'POST',
           headers: {
@@ -602,7 +602,7 @@ function Film() {
     }
 
     fetch(
-      `http://localhost:5000/api/interactions/${reviewId}/like`,
+      `https://letterboxd-clone-l6rs.onrender.com/api/interactions/${reviewId}/like`,
       {
         method: 'POST',
         headers: {

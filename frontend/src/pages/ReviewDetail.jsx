@@ -56,7 +56,7 @@ function ReviewDetail() {
       // Case 1: Fetch by username and movieId if username exists
       if (username && paramId) {
         try {
-          const res = await fetch(`http://localhost:5000/api/interactions/review/by-user/${username}/${paramId}`)
+          const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/review/by-user/${username}/${paramId}`)
           if (res.ok) {
             foundReview = await res.json()
             movieId = foundReview.movieId || paramId
@@ -76,7 +76,7 @@ function ReviewDetail() {
           const searchData = await searchRes.json()
           if (searchData.results && searchData.results.length > 0) {
             const resolvedId = searchData.results[0].id.toString()
-            const res = await fetch(`http://localhost:5000/api/interactions/review/by-user/${username}/${resolvedId}`)
+            const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/review/by-user/${username}/${resolvedId}`)
             if (res.ok) {
               foundReview = await res.json()
               movieId = resolvedId
@@ -90,7 +90,7 @@ function ReviewDetail() {
       // Case 2: Fetch by interaction _id if paramId looks like a MongoDB ObjectId
       if (!foundReview && paramId && paramId.length === 24) {
         try {
-          const res = await fetch(`http://localhost:5000/api/interactions/review/${paramId}`)
+          const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/review/${paramId}`)
           if (res.ok) {
             foundReview = await res.json()
             movieId = foundReview.movieId
@@ -103,7 +103,7 @@ function ReviewDetail() {
       // Fallback: search reviews for movie
       if (!foundReview && movieId) {
         try {
-          const res = await fetch(`http://localhost:5000/api/interactions/movie/${movieId}/reviews`)
+          const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/movie/${movieId}/reviews`)
           if (res.ok) {
             const list = await res.json()
             if (username) {
@@ -145,7 +145,7 @@ function ReviewDetail() {
       // Fetch logged-in user's own interaction on this film
       if (token && movieId) {
         try {
-          const userIntRes = await fetch(`http://localhost:5000/api/interactions/${movieId}`, {
+          const userIntRes = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/${movieId}`, {
             headers: { Authorization: `Bearer ${token}` }
           })
           if (userIntRes.ok) {
@@ -177,7 +177,7 @@ function ReviewDetail() {
     if (!review?._id) return
 
     try {
-      const res = await fetch(`http://localhost:5000/api/interactions/${review._id}/like`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/${review._id}/like`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -202,7 +202,7 @@ function ReviewDetail() {
 
     try {
       setSubmittingComment(true)
-      const res = await fetch(`http://localhost:5000/api/interactions/${review._id}/reply`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/${review._id}/reply`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -237,7 +237,7 @@ function ReviewDetail() {
 
     setSavingEdit(true)
     try {
-      const res = await fetch(`http://localhost:5000/api/interactions/review/${review._id}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/review/${review._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -278,7 +278,7 @@ function ReviewDetail() {
 
     setDeletingReview(true)
     try {
-      const res = await fetch(`http://localhost:5000/api/interactions/review/${review._id}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/review/${review._id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`

@@ -50,7 +50,7 @@ function Settings() {
   const fetchSettings = async () => {
     try {
       setLoading(true)
-      const res = await fetch('http://localhost:5000/api/auth/me', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/auth/me', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       const data = await res.json()
@@ -84,7 +84,7 @@ function Settings() {
     try {
       setSaving(true)
       setErrorMsg('')
-      const res = await fetch('http://localhost:5000/api/auth/settings', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/auth/settings', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ function Settings() {
   const handleDeactivateAccount = async () => {
     try {
       setDeactivating(true)
-      const res = await fetch('http://localhost:5000/api/auth/deactivate', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/auth/deactivate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -93,10 +93,10 @@ function UserReviews() {
       let endpoint = ''
       if (isGlobal) {
         endpoint = globalTab === 'popular'
-          ? `http://localhost:5000/api/interactions/popular-reviews?limit=10&page=${page}`
-          : `http://localhost:5000/api/interactions/recent-reviews?limit=10&page=${page}`
+          ? `https://letterboxd-clone-l6rs.onrender.com/api/interactions/popular-reviews?limit=10&page=${page}`
+          : `https://letterboxd-clone-l6rs.onrender.com/api/interactions/recent-reviews?limit=10&page=${page}`
       } else {
-        endpoint = `http://localhost:5000/api/interactions/user/${username}/reviews`
+        endpoint = `https://letterboxd-clone-l6rs.onrender.com/api/interactions/user/${username}/reviews`
       }
 
       const res = await fetch(endpoint)
@@ -189,7 +189,7 @@ function UserReviews() {
 
     setSavingEdit(true)
     try {
-      const res = await fetch(`http://localhost:5000/api/interactions/review/${editingReview._id}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/review/${editingReview._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -234,7 +234,7 @@ function UserReviews() {
 
     setIsDeleting(true)
     try {
-      const res = await fetch(`http://localhost:5000/api/interactions/review/${targetRev._id}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/review/${targetRev._id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`

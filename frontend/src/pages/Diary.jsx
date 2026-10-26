@@ -73,7 +73,7 @@ function Diary() {
       if (selectedMonth !== 'all') params.append('month', selectedMonth)
       params.append('sort', sortBy)
 
-      const res = await fetch(`http://localhost:5000/api/interactions/user/${username}/diary?${params.toString()}`)
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/user/${username}/diary?${params.toString()}`)
       const data = await res.json()
 
       const list = data.entries || []
@@ -166,7 +166,7 @@ function Diary() {
 
     try {
       setActionLoading(true)
-      const res = await fetch(`http://localhost:5000/api/interactions/diary/${entryId}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/diary/${entryId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -206,7 +206,7 @@ function Diary() {
     if (!token || !editingEntry) return
     try {
       setActionLoading(true)
-      const res = await fetch(`http://localhost:5000/api/interactions/diary/${editingEntry._id}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/interactions/diary/${editingEntry._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

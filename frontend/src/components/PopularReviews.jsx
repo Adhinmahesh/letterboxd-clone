@@ -21,7 +21,7 @@ function PopularReviews() {
       setLoading(true)
 
       // 1. Fetch real popular reviews (sorted by most likes)
-      const reviewsRes = await fetch('http://localhost:5000/api/interactions/popular-reviews?limit=5')
+      const reviewsRes = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions/popular-reviews?limit=5')
       const reviewsData = await reviewsRes.json()
       const reviewList = Array.isArray(reviewsData) ? reviewsData : []
       setReviews(reviewList)
@@ -54,7 +54,7 @@ function PopularReviews() {
 
       // 2. Fetch real public lists
       try {
-        const listsRes = await fetch('http://localhost:5000/api/lists?type=popular&limit=3')
+        const listsRes = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/lists?type=popular&limit=3')
         if (listsRes.ok) {
           const listsData = await listsRes.json()
           if (Array.isArray(listsData) && listsData.length > 0) {
@@ -67,7 +67,7 @@ function PopularReviews() {
 
       // 3. Fetch real popular reviewers
       try {
-        const reviewersRes = await fetch('http://localhost:5000/api/interactions/popular-reviewers')
+        const reviewersRes = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions/popular-reviewers')
         if (reviewersRes.ok) {
           const reviewersData = await reviewersRes.json()
           if (Array.isArray(reviewersData) && reviewersData.length > 0) {

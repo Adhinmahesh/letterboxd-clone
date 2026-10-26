@@ -64,8 +64,8 @@ function UserFilms() {
     try {
       setLoading(true)
       const endpoint = isLikesView
-        ? `http://localhost:5000/api/interactions/user/${username}/likes`
-        : `http://localhost:5000/api/interactions/user/${username}/watched`
+        ? `https://letterboxd-clone-l6rs.onrender.com/api/interactions/user/${username}/likes`
+        : `https://letterboxd-clone-l6rs.onrender.com/api/interactions/user/${username}/watched`
 
       const res = await fetch(endpoint)
       const data = await res.json()

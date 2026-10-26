@@ -57,7 +57,7 @@ function Network() {
   const fetchNetwork = async () => {
     try {
       setLoading(true)
-      const res = await fetch(`http://localhost:5000/api/auth/user/${username}/network`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/auth/user/${username}/network`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       })
       const data = await res.json()
@@ -93,8 +93,8 @@ function Network() {
 
     const isFollowing = targetUser.isFollowing
     const endpoint = isFollowing
-      ? `http://localhost:5000/api/auth/user/${targetUser.username}/unfollow`
-      : `http://localhost:5000/api/auth/user/${targetUser.username}/follow`
+      ? `https://letterboxd-clone-l6rs.onrender.com/api/auth/user/${targetUser.username}/unfollow`
+      : `https://letterboxd-clone-l6rs.onrender.com/api/auth/user/${targetUser.username}/follow`
 
     try {
       const res = await fetch(endpoint, {
@@ -144,7 +144,7 @@ function Network() {
     setActionLoading(true)
 
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/user/${targetUser.username}/unblock`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/auth/user/${targetUser.username}/unblock`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

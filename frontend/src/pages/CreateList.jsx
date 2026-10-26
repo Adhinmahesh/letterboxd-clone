@@ -60,7 +60,7 @@ function CreateList() {
   useEffect(() => {
     if (!listId) return
     setLoadingList(true)
-    fetch(`http://localhost:5000/api/lists/${listId}`, {
+    fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/${listId}`, {
       headers: token ? { Authorization: `Bearer ${token}` } : {}
     })
       .then(res => res.json())
@@ -94,7 +94,7 @@ function CreateList() {
     }
     setDeleting(true)
     try {
-      const res = await fetch(`http://localhost:5000/api/lists/${listId}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/${listId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -232,8 +232,8 @@ function CreateList() {
     setSaving(true)
     try {
       const url = isEditMode
-        ? `http://localhost:5000/api/lists/${listId}`
-        : 'http://localhost:5000/api/lists'
+        ? `https://letterboxd-clone-l6rs.onrender.com/api/lists/${listId}`
+        : 'https://letterboxd-clone-l6rs.onrender.com/api/lists'
       const method = isEditMode ? 'PUT' : 'POST'
 
       const res = await fetch(url, {

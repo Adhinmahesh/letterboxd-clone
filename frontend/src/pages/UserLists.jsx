@@ -44,7 +44,7 @@ function UserLists() {
     try {
       setLoading(true)
       const headers = token ? { 'Authorization': `Bearer ${token}` } : {}
-      const res = await fetch(`http://localhost:5000/api/lists/user/${username}`, { headers })
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/user/${username}`, { headers })
       const data = await res.json()
       setLists(Array.isArray(data) ? data : [])
     } catch (err) {
@@ -60,7 +60,7 @@ function UserLists() {
     if (!window.confirm('Are you sure you want to delete this list?')) return
 
     try {
-      const res = await fetch(`http://localhost:5000/api/lists/${id}`, {
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       })

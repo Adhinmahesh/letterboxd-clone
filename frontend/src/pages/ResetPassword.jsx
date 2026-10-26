@@ -41,7 +41,7 @@ function ResetPassword() {
 
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:5000/api/auth/forgot-password', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/auth/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: emailInput.trim() })
@@ -72,7 +72,7 @@ function ResetPassword() {
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/forgot-password', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/auth/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: targetEmail || emailInput.trim() })
@@ -115,7 +115,7 @@ function ResetPassword() {
 
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:5000/api/auth/reset-password', {
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/auth/reset-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

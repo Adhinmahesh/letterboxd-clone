@@ -35,7 +35,7 @@ function Lists() {
   const fetchFeaturedLists = async () => {
     try {
       setLoadingFeatured(true)
-      const res = await fetch('http://localhost:5000/api/lists?type=featured&limit=3')
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/lists?type=featured&limit=3')
       const data = await res.json()
       setFeaturedLists(Array.isArray(data) ? data : [])
     } catch (err) {
@@ -49,7 +49,7 @@ function Lists() {
   const fetchPopularLists = async (limit) => {
     try {
       setLoadingPopular(true)
-      const res = await fetch(`http://localhost:5000/api/lists?type=popular&limit=${limit}`)
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists?type=popular&limit=${limit}`)
       const data = await res.json()
       if (Array.isArray(data)) {
         setPopularLists(data)
@@ -71,7 +71,7 @@ function Lists() {
   const fetchRecentlyLikedLists = async (limit) => {
     try {
       setLoadingRecent(true)
-      const res = await fetch(`http://localhost:5000/api/lists?type=recently-liked&limit=${limit}`)
+      const res = await fetch(`https://letterboxd-clone-l6rs.onrender.com/api/lists?type=recently-liked&limit=${limit}`)
       const data = await res.json()
       if (Array.isArray(data)) {
         setRecentlyLikedLists(data)
@@ -91,7 +91,7 @@ function Lists() {
 
   const fetchCrewPicks = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/lists?type=featured&limit=4')
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/lists?type=featured&limit=4')
       const data = await res.json()
       setCrewPicks(Array.isArray(data) ? data : [])
     } catch (err) {

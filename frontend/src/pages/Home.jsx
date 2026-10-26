@@ -60,7 +60,7 @@ function Home() {
 
       // Get user's liked and high-rated films
       const likedRes = await fetch(
-        `http://localhost:5000/api/interactions/user-liked-films?username=${currentUsername}`,
+        `https://letterboxd-clone-l6rs.onrender.com/api/interactions/user-liked-films?username=${currentUsername}`,
         {
           headers: token ? { Authorization: `Bearer ${token}` } : {}
         }
@@ -164,7 +164,7 @@ function Home() {
   const fetchRecentlyReviewed = async () => {
     try {
       setLoadingRecent(true)
-      const res = await fetch('http://localhost:5000/api/interactions/recent-reviews?limit=6')
+      const res = await fetch('https://letterboxd-clone-l6rs.onrender.com/api/interactions/recent-reviews?limit=6')
       const recentReviews = await res.json()
 
       if (Array.isArray(recentReviews) && recentReviews.length > 0) {
